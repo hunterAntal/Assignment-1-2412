@@ -7,6 +7,8 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include "dequeue.h"
+
 
 
 #define INIT -128 // the queue should utilize -128 to signify empty queue elements.
@@ -21,7 +23,7 @@ struct Queue{
     unsigned long tail;
     unsigned long length;
     unsigned long element_num;
-    int data;
+    char *data;
 };
 
 void build(struct Queue** queue, unsigned long length){
@@ -33,6 +35,8 @@ void build(struct Queue** queue, unsigned long length){
             (*queue)->head = 1;
             (*queue)->tail = 1;
             (*queue)->element_num = 0;
+            (*queue)->data = (char*) malloc(length * sizeof(char));
+            printf("Queue built sucessfully with length %ld. \n", length);
         }
     }
 };
