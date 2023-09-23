@@ -38,11 +38,12 @@ void build(struct Queue** queue, unsigned long length){
     }
 };
 
-char dequeue(struct Queue *q){
-    if(q->element_num == 0) // check to see if the queue is empty
+int dequeue(struct Queue *q){
+    if(q->element_num == 0){ // check to see if the queue is empty
         printf("Queue Underflow!");
-    
-    char val = q->data[q->head];
+        return 0;
+    }
+    int val = q->data[q->head];
     q->head = (q->head + 1)%q->length; // if head = length then set head = 0
     q->element_num--;
     printf("Element %c dequeued\n", val);
@@ -50,7 +51,16 @@ char dequeue(struct Queue *q){
 }
 
 
-
+//void enqueue(struct Queue *q, int x){
+//    if(q->element_num>=q->length){
+//        printf("Queue overflow!\n");
+//        return;
+//}
+//    q->data[q->tail] = x;
+//    q->tail = (q->tail + 1)%q->length; // increment tail, if tail = length then set tail = 0
+//    q->element_num++;
+//    printf("Element %d enqueued.\n", x);
+//}
 
 
 // main added from assignment
@@ -80,5 +90,4 @@ int main(int argc, const char * argv[]) {
     printf("\n");
     return 0;
 }
-
 
