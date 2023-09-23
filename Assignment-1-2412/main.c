@@ -7,8 +7,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "dequeue.h"
-
+// #include "dequeue.h"
 
 
 #define INIT -128 // the queue should utilize -128 to signify empty queue elements.
@@ -25,6 +24,8 @@ struct Queue{
     unsigned long element_num;
     char *data;
 };
+
+void enqueue(struct Queue *q, int x); // prototype
 
 void build(struct Queue** queue, unsigned long length){
     if((length>0)&&(length<=QUEUELIMIT)){// error checking for length val
@@ -60,8 +61,14 @@ char dequeue(struct Queue *q){
 int main(int argc, const char * argv[]) {
     
     struct Queue *qptr = NULL;
+
+   
     
     build(&qptr, 5);
+
+    // printf("%ld", qptr->element_num);
+    // printf("%ld", qptr->length);
+
     // ====== Beginn Test Case 1
     enqueue(qptr, 1);
     enqueue(qptr, 2);
@@ -85,15 +92,20 @@ int main(int argc, const char * argv[]) {
 }
 
 void enqueue(struct Queue *q, int x) {
-    q->tail = x; // sets value at tail
-    if (q->tail == q->length) {
-        q->tail = 1; // initialises tail when enqueue first used
+
+    if (q->element_num >= q->length) { // checks if there are an equal amount of elements as there is room for them
+        q->tail = 0;
+        q->element_num = 0;
+        printf("overflow\n");
+        return;
     }
-    else {
-        if (q->head = q->tail) {
-            printf("Queue overflow");
-            return;
-        }
-        q->tail; // increments tail by one
-    }
+
+    // if (q->tail == q->length) {
+    //     q->tail = 1; // initialises tail when enqueue first used
+    // }  
+
+    q->data[q->tail] = x; // sets value at tail equal to val x     
+    q->tail++; // increments tail by one
+    q->element_num++;    
+    printf("element %d queued\n", x);
 }
