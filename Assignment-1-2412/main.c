@@ -40,15 +40,20 @@ void build(struct Queue** queue, unsigned long length){
 };
 
 int dequeue(struct Queue *q){
-    if(q->element_num == 0){ // check to see if the queue is empty
-        printf("Queue Underflow!");
-        return 0;
+    if (q != NULL) { // checks if queue exists
+        if(q->element_num == 0){ // check to see if the queue is empty
+            printf("Queue Underflow!");
+            return 0;
+        }
+        int val = q->data[q->head];
+        q->head = (q->head + 1)%q->length; // if head = length then set head = 0
+        q->element_num--;
+        printf("Element %c dequeued\n", val);
+        return val;
     }
-    int val = q->data[q->head];
-    q->head = (q->head + 1)%q->length; // if head = length then set head = 0
-    q->element_num--;
-    printf("Element %c dequeued\n", val);
-    return val;
+    else {
+        printf("Build queue before dequeing");
+    }
 }
 
 
