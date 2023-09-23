@@ -1,54 +1,48 @@
-//
-//  main.c
-//  Assignment-1-2412
-//
-//  Created by Hunter Antal on 2023-09-23.
-//
-
 #include <stdio.h>
 #include <stdlib.h>
-//// #include "dequeue.h"
 
+#define QUEUELIMIT 200 // Maximum allowed size of the queue for error checking
 
-
-#define QUEUELIMIT 200 // imagine this is a tatic cless member, used for some error checking
-
-// data type Queue
+// Declare a struct for the Queue
 struct Queue{
     unsigned long head;
     unsigned long tail;
     unsigned long length;
-    unsigned long element_num;
-    int *data; // array
+    unsigned long element_num; // Number of elements in the queue
+    int *data; // Array to hold the queue elements
 };
 
-void enqueue(struct Queue *q, int x); // prototype
+// Function prototypes
+void enqueue(struct Queue *q, int x);
+void build(struct Queue** queue, unsigned long length);
 
+// Function to initialize the queue
 void build(struct Queue** queue, unsigned long length){
-    if((length>0)&&(length<=QUEUELIMIT)){// error checking for length val
-        *queue = (struct Queue*) malloc(sizeof(struct Queue)); //allocate and typecast 1 Queue
+    if((length>0)&&(length<=QUEUELIMIT)){ // Check if the provided length is within the limit
+        *queue = (struct Queue*) malloc(sizeof(struct Queue)); // Allocate memory for the queue
         
-        if(*queue){ // error checking if queue is null
-            (*queue)->length=length;
+        if(*queue){ // Check if the memory was allocated successfully
+            (*queue)->length = length;
             (*queue)->head = 0;
             (*queue)->tail = 0;
             (*queue)->element_num = 0;
-            (*queue)->data = (int*) malloc(length * sizeof(int));
-            printf("Queue built sucessfully with length %ld. \n", length);
+            (*queue)->data = (int*) malloc(length * sizeof(int)); // Allocate memory for the data array
+            printf("Queue built successfully with length %ld. \n", length);
         }
     }
-};
+}
 
+// Function to dequeue an element
 int dequeue(struct Queue *q){
     if (q != NULL) { // checks if queue exists
-        if(q->element_num == 0){ // check to see if the queue is empty
-            printf("Queue Underflow!");
+        if(q->element_num == 0){ // Check for underflow
+            printf("Queue Underflow!\n");
             return 0;
         }
-        int val = q->data[q->head];
-        q->head = (q->head + 1)%q->length; // if head = length then set head = 0
-        q->element_num--;
-        printf("Element %c dequeued\n", val);
+        int val = q->data[q->head]; // Save the value to be dequeued
+        q->head = (q->head + 1) % q->length; // Update the head index
+        q->element_num--; // Decrement the number of elements
+        printf("Element %d dequeued\n", val);
         return val;
     }
     else {
@@ -56,20 +50,13 @@ int dequeue(struct Queue *q){
     }
 }
 
-
-// main added from assignment
+// Main function
 int main(int argc, const char * argv[]) {
-    
     struct Queue *qptr = NULL;
-
-   
     
-    build(&qptr, 5);
+    build(&qptr, 5); // Initialize the queue with size 5
 
-    // printf("%ld", qptr->element_num);
-    // printf("%ld", qptr->length);
-
-    // ====== Beginn Test Case 1
+    // Test Case 1
     enqueue(qptr, 1);
     enqueue(qptr, 2);
     enqueue(qptr, 3);
@@ -82,24 +69,22 @@ int main(int argc, const char * argv[]) {
     printf("Dequeue() %d \n", dequeue(qptr));
     printf("Dequeue() %d \n", dequeue(qptr));
     printf("Dequeue() %d \n", dequeue(qptr));
-    // ====== End Test Case 1
-    
-    // free anything that was created with malloc!
+
+    // Free allocated memory
     if (qptr->data) free(qptr->data);
     if(qptr) free(qptr);
-    printf("\n");
+    
     return 0;
 }
 
+// Function to enqueue an element
 void enqueue(struct Queue *q, int x) {
-
-    if (q->element_num >= q->length) { // checks if there are an equal amount of elements as there is room for them
+    if (q->element_num >= q->length) { // Check for overflow
         printf("Overflow encountered\n");
         return;
-    }  
-
-    q->data[q->tail] = x; // sets value at tail equal to val x     
-    q->tail++; // increments tail by one
-    q->element_num++; // shows that 1 element was added
-    printf("element %d queued.\n", x); // prints queue confimartion
+    }
+    q->data[q->tail] = x; // Insert the element at the tail
+    q->tail++; // Update the tail index
+    q->element_num++; // Increment the number of elements
+    printf("Element %d queued.\n", x);
 }
