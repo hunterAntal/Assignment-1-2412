@@ -56,9 +56,6 @@ char dequeue(struct Queue *q){
 
 
 
-
-
-
 // main added from assignment
 int main(int argc, const char * argv[]) {
     
@@ -85,4 +82,18 @@ int main(int argc, const char * argv[]) {
     if(qptr) free(qptr);
     printf("\n");
     return 0;
+}
+
+void enqueue(struct Queue *q, int x) {
+    q->tail = x; // sets value at tail
+    if (q->tail == q->length) {
+        q->tail = 1; // initialises tail when enqueue first used
+    }
+    else {
+        if (q->head = q->tail) {
+            printf("Queue overflow");
+            return;
+        }
+        q->tail; // increments tail by one
+    }
 }
