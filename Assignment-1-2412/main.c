@@ -30,8 +30,8 @@ void build(struct Queue** queue, unsigned long length){
         
         if(*queue){ // error checking if queue is null
             (*queue)->length=length;
-            (*queue)->head = 1;
-            (*queue)->tail = 1;
+            (*queue)->head = 0;
+            (*queue)->tail = 0;
             (*queue)->element_num = 0;
             (*queue)->data = (int*) malloc(length * sizeof(int));
             printf("Queue built sucessfully with length %ld. \n", length);
@@ -50,18 +50,6 @@ int dequeue(struct Queue *q){
     printf("Element %c dequeued\n", val);
     return val;
 }
-
-
-//void enqueue(struct Queue *q, int x){
-//    if(q->element_num>=q->length){
-//        printf("Queue overflow!\n");
-//        return;
-//}
-//    q->data[q->tail] = x;
-//    q->tail = (q->tail + 1)%q->length; // increment tail, if tail = length then set tail = 0
-//    q->element_num++;
-//    printf("Element %d enqueued.\n", x);
-//}
 
 
 // main added from assignment
@@ -101,18 +89,12 @@ int main(int argc, const char * argv[]) {
 void enqueue(struct Queue *q, int x) {
 
     if (q->element_num >= q->length) { // checks if there are an equal amount of elements as there is room for them
-        q->tail = 0;
-        q->element_num = 0;
-        printf("overflow\n");
+        printf("Overflow encountered\n");
         return;
-    }
-
-    // if (q->tail == q->length) {
-    //     q->tail = 1; // initialises tail when enqueue first used
-    // }  
+    }  
 
     q->data[q->tail] = x; // sets value at tail equal to val x     
     q->tail++; // increments tail by one
-    q->element_num++;    
-    printf("element %d queued\n", x);
+    q->element_num++; // shows taht 1 element was added
+    printf("element %d queued.\n", x); // prints queue confimartion
 }
