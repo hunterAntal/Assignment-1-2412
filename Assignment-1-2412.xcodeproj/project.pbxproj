@@ -25,7 +25,6 @@
 /* Begin PBXFileReference section */
 		0D42E7D22ABF621A00606E1E /* Assignment-1-2412 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Assignment-1-2412"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D42E7D52ABF621A00606E1E /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
-		0D42E7EF2ABF7D3500606E1E /* dequeue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = dequeue.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,7 +58,6 @@
 			isa = PBXGroup;
 			children = (
 				0D42E7D52ABF621A00606E1E /* main.c */,
-				0D42E7EF2ABF7D3500606E1E /* dequeue.h */,
 			);
 			path = "Assignment-1-2412";
 			sourceTree = "<group>";
