@@ -48,6 +48,7 @@ int dequeue(struct Queue *q){
     else {
         printf("Build queue before dequeing");
     }
+    return 0;
 }
 
 // Main function
