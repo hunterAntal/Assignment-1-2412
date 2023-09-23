@@ -95,6 +95,6 @@ void enqueue(struct Queue *q, int x) {
 
     q->data[q->tail] = x; // sets value at tail equal to val x     
     q->tail++; // increments tail by one
-    q->element_num++; // shows taht 1 element was added
+    q->element_num++; // shows that 1 element was added
     printf("element %d queued.\n", x); // prints queue confimartion
 }
