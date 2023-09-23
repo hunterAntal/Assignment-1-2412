@@ -7,14 +7,11 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-// #include "dequeue.h"
+//// #include "dequeue.h"
 
 
-#define INIT -128 // the queue should utilize -128 to signify empty queue elements.
-#define UNDERFLOW (0x80 + 0x01) // when a dequeue operation encounters an underflow, it should return -127 to indicate this condition
-#define OVERFLOW 0x80 + 0x02
-#define BADPTR (0x80 + 0x03)
-#define QUEUELIMIT (unsigned long) 1.20E2 // imagine this is a tatic cless member, used for some error checking
+
+#define QUEUELIMIT 200 // imagine this is a tatic cless member, used for some error checking
 
 // data type Queue
 struct Queue{
@@ -22,7 +19,7 @@ struct Queue{
     unsigned long tail;
     unsigned long length;
     unsigned long element_num;
-    char *data;
+    int *data; // array
 };
 
 void enqueue(struct Queue *q, int x); // prototype
@@ -36,17 +33,18 @@ void build(struct Queue** queue, unsigned long length){
             (*queue)->head = 1;
             (*queue)->tail = 1;
             (*queue)->element_num = 0;
-            (*queue)->data = (char*) malloc(length * sizeof(char));
+            (*queue)->data = (int*) malloc(length * sizeof(int));
             printf("Queue built sucessfully with length %ld. \n", length);
         }
     }
 };
 
-char dequeue(struct Queue *q){
-    if(q->element_num == 0) // check to see if the queue is empty
+int dequeue(struct Queue *q){
+    if(q->element_num == 0){ // check to see if the queue is empty
         printf("Queue Underflow!");
-    
-    char val = q->data[q->head];
+        return 0;
+    }
+    int val = q->data[q->head];
     q->head = (q->head + 1)%q->length; // if head = length then set head = 0
     q->element_num--;
     printf("Element %c dequeued\n", val);
@@ -54,7 +52,16 @@ char dequeue(struct Queue *q){
 }
 
 
-
+//void enqueue(struct Queue *q, int x){
+//    if(q->element_num>=q->length){
+//        printf("Queue overflow!\n");
+//        return;
+//}
+//    q->data[q->tail] = x;
+//    q->tail = (q->tail + 1)%q->length; // increment tail, if tail = length then set tail = 0
+//    q->element_num++;
+//    printf("Element %d enqueued.\n", x);
+//}
 
 
 // main added from assignment
