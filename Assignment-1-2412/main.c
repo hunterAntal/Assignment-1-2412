@@ -41,6 +41,17 @@ void build(struct Queue** queue, unsigned long length){
     }
 };
 
+char dequeue(struct Queue *q){
+    if(q->element_num == 0) // check to see if the queue is empty
+        printf("Queue Underflow!");
+    
+    char val = q->data[q->head];
+    q->head = (q->head + 1)%q->length; // if head = length then set head = 0
+    q->element_num--;
+    printf("Element %c dequeued\n", val);
+    return val;
+}
+
 
 
 
