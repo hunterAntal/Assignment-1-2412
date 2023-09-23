@@ -14,7 +14,6 @@ struct Queue{
 
 // Function prototypes
 void enqueue(struct Queue *q, int x);
-void build(struct Queue** queue, unsigned long length);
 
 // Function to initialize the queue
 void build(struct Queue** queue, unsigned long length){
