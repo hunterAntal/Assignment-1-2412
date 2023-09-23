@@ -7,6 +7,12 @@
 
 #include <stdio.h>
 
+#define INIT -128 // the queue should utilize -128 to signify empty queue elements.
+#define UNDERFLOW (0x80 + 0x01) // when a dequeue operation encounters an underflow, it should return -127 to indicate this condition
+#define OVERFLOW 0x80 + 0x02
+#define BADPTR (0x80 + 0x03)
+#define PQLIMIT (unsigned long) 1.20E2 // imagine this is a tatic cless member, used for some error checking
+
 // data type Queue
 struct Queue{
     unsigned long head;
