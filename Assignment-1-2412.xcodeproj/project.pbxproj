@@ -42,7 +42,6 @@
 		0D42E7C92ABF621A00606E1E = {
 			isa = PBXGroup;
 			children = (
-				0D42E7EF2ABF7D3500606E1E /* dequeue.h */,
 				0D42E7D42ABF621A00606E1E /* Assignment-1-2412 */,
 				0D42E7D32ABF621A00606E1E /* Products */,
 			);
@@ -60,6 +59,7 @@
 			isa = PBXGroup;
 			children = (
 				0D42E7D52ABF621A00606E1E /* main.c */,
+				0D42E7EF2ABF7D3500606E1E /* dequeue.h */,
 			);
 			path = "Assignment-1-2412";
 			sourceTree = "<group>";

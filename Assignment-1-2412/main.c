@@ -7,15 +7,12 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "dequeue.h"
+//#include "dequeue.h"
 
 
 
-#define INIT -128 // the queue should utilize -128 to signify empty queue elements.
-#define UNDERFLOW (0x80 + 0x01) // when a dequeue operation encounters an underflow, it should return -127 to indicate this condition
-#define OVERFLOW 0x80 + 0x02
-#define BADPTR (0x80 + 0x03)
-#define QUEUELIMIT (unsigned long) 1.20E2 // imagine this is a tatic cless member, used for some error checking
+
+#define QUEUELIMIT 200 // imagine this is a tatic cless member, used for some error checking
 
 // data type Queue
 struct Queue{
@@ -23,7 +20,7 @@ struct Queue{
     unsigned long tail;
     unsigned long length;
     unsigned long element_num;
-    char *data;
+    char *data; // array
 };
 
 void build(struct Queue** queue, unsigned long length){
@@ -84,16 +81,4 @@ int main(int argc, const char * argv[]) {
     return 0;
 }
 
-void enqueue(struct Queue *q, int x) {
-    q->tail = x; // sets value at tail
-    if (q->tail == q->length) {
-        q->tail = 1; // initialises tail when enqueue first used
-    }
-    else {
-        if (q->head = q->tail) {
-            printf("Queue overflow");
-            return;
-        }
-        q->tail; // increments tail by one
-    }
-}
+
