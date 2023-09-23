@@ -7,7 +7,26 @@
 
 #include <stdio.h>
 
+// data type Queue
+struct Queue{
+    unsigned long head;
+    unsigned long tail;
+    unsigned long length;
+    unsigned long element_num;
+};
 
+struct Queue* build(unsigned long length){
+    struct Queue* queue = NULL; //create a null pointer of type Queue
+};
+
+
+
+
+
+
+
+
+// main added from assignment
 int main(int argc, const char * argv[]) {
     
     struct Queue *qptr = NULL;
