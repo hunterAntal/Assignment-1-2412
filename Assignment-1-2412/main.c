@@ -20,7 +20,7 @@ struct Queue{
     unsigned long tail;
     unsigned long length;
     unsigned long element_num;
-    char *data; // array
+    int *data; // array
 };
 
 void build(struct Queue** queue, unsigned long length){
@@ -32,7 +32,7 @@ void build(struct Queue** queue, unsigned long length){
             (*queue)->head = 1;
             (*queue)->tail = 1;
             (*queue)->element_num = 0;
-            (*queue)->data = (char*) malloc(length * sizeof(char));
+            (*queue)->data = (int*) malloc(length * sizeof(int));
             printf("Queue built sucessfully with length %ld. \n", length);
         }
     }
