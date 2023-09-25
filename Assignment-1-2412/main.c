@@ -39,6 +39,7 @@ int dequeue(struct Queue *q){
             return 0;
         }
         int val = q->data[q->head]; // Save the value to be dequeued
+        q->data[q->head] = 0; // make the dequeued element 0 to represent an empty element
         q->head = (q->head + 1) % q->length; // Update the head index
         q->element_num--; // Decrement the number of elements
         printf("Element %d dequeued\n", val);
@@ -64,6 +65,10 @@ int main(int argc, const char * argv[]) {
     enqueue(qptr, 5);
     enqueue(qptr, 6);
     printf("Dequeue() %d \n", dequeue(qptr));
+    for(int i = 0; i< 5; i++){
+        
+        printf("%d\n", qptr->data[i]);
+    }
     printf("Dequeue() %d \n", dequeue(qptr));
     printf("Dequeue() %d \n", dequeue(qptr));
     printf("Dequeue() %d \n", dequeue(qptr));
