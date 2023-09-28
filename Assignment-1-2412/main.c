@@ -83,7 +83,7 @@ int main(int argc, const char * argv[]) {
 }
 
 // Function to enqueue an element
-void enqueue(struct Queue *q, int x) {
+void enqueue(struct Queue *q, char x) {
     if (q != NULL) { // checks if queue exists
         if (q->element_num >= q->length) { // Check for overflow
             printf("Overflow encountered\n");
