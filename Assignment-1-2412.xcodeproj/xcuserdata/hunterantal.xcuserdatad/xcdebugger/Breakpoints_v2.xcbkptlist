@@ -3,4 +3,54 @@
    uuid = "E1608FF5-33D4-4052-856D-DFB0FA7C0022"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8C3B1BA0-F37C-4688-A9B8-9FFF319C35A0"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Assignment-1-2412/main.c"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
+            landmarkName = "main(argc, argv)"
+            landmarkType = "9">
+            <Locations>
+               <Location
+                  uuid = "8C3B1BA0-F37C-4688-A9B8-9FFF319C35A0 - e7f42e50b199bc48"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "main"
+                  moduleName = "Assignment-1-2412"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hunterantal/Developer/Data%20Structures%202412/Assignment-1-2412/Assignment-1-2412/main.c"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "63"
+                  endingLineNumber = "63"
+                  offsetFromSymbolStart = "76">
+               </Location>
+               <Location
+                  uuid = "8C3B1BA0-F37C-4688-A9B8-9FFF319C35A0 - e7f42e50b199bc77"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "main"
+                  moduleName = "Assignment-1-2412"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hunterantal/Developer/Data%20Structures%202412/Assignment-1-2412/Assignment-1-2412/main.c"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "64"
+                  endingLineNumber = "64"
+                  offsetFromSymbolStart = "76">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
