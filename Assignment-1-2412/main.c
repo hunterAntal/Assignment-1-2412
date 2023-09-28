@@ -9,23 +9,22 @@ struct Queue{
     unsigned long tail;
     unsigned long length;
     unsigned long element_num; // Number of elements in the queue
-    int *data; // Array to hold the queue elements
+    char *data; // Array to hold the queue elements
 };
 
 // Function prototypes
-void enqueue(struct Queue *q, int x);
+void enqueue(struct Queue *q, char x);
 
 // Function to initialize the queue
 void build(struct Queue** queue, unsigned long length){
     if((length>0)&&(length<=QUEUELIMIT)){ // Check if the provided length is within the limit
         *queue = (struct Queue*) malloc(sizeof(struct Queue)); // Allocate memory for the queue
-        
         if(*queue){ // Check if the memory was allocated successfully
             (*queue)->length = length;
             (*queue)->head = 0;
             (*queue)->tail = 0;
             (*queue)->element_num = 0;
-            (*queue)->data = (int*) malloc(length * sizeof(int)); // Allocate memory for the data array
+            (*queue)->data = (char*) malloc(length * sizeof(char)); // Allocate memory for the data array
             printf("Queue built successfully with length %ld. \n", length);
         }
     }
@@ -41,7 +40,7 @@ int dequeue(struct Queue *q){
         int val = q->data[q->head]; // Save the value to be dequeued
         q->head = (q->head + 1) % q->length; // Update the head index
         q->element_num--; // Decrement the number of elements
-        printf("Element %d dequeued\n", val);
+        //printf("Element %d dequeued\n", val);
         return val;
     }
     else {
@@ -78,7 +77,7 @@ int main(int argc, const char * argv[]) {
 }
 
 // Function to enqueue an element
-void enqueue(struct Queue *q, int x) {
+void enqueue(struct Queue *q, char x) {
     if (q->element_num >= q->length) { // Check for overflow
         printf("Overflow encountered\n");
         return;
