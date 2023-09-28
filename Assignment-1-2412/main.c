@@ -97,13 +97,3 @@ void enqueue(struct Queue *q, char x) {
     else {
         printf("Build queue before enqueuing\n");
     }
-void enqueue(struct Queue *q, char x) {
-    if (q->element_num >= q->length) { // Check for overflow
-        printf("Overflow encountered\n");
-        return;
-    }
-    q->data[q->tail] = x; // Insert the element at the tail
-    q->tail++; // Update the tail index
-    q->element_num++; // Increment the number of elements
-    printf("Element %d queued.\n", x);
-}
