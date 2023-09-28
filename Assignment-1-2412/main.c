@@ -97,3 +97,4 @@ void enqueue(struct Queue *q, char x) {
     else {
         printf("Build queue before enqueuing\n");
     }
+}
