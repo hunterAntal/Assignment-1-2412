@@ -1,3 +1,6 @@
+// Kamran Yaghoubian
+// Hunter Antal
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -46,7 +49,7 @@ int dequeue(struct Queue *q){
         return val;
     }
     else {
-        printf("Build queue before dequeing");
+        printf("Build queue before dequeing\n");
     }
     return 0;
 }
@@ -55,6 +58,9 @@ int dequeue(struct Queue *q){
 int main(int argc, const char * argv[]) {
     struct Queue *qptr = NULL;
     
+    dequeue(qptr);
+    enqueue(qptr, 3);
+
     build(&qptr, 5); // Initialize the queue with size 5
 
     // Test Case 1
@@ -80,12 +86,17 @@ int main(int argc, const char * argv[]) {
 
 // Function to enqueue an element
 void enqueue(struct Queue *q, int x) {
-    if (q->element_num >= q->length) { // Check for overflow
-        printf("Overflow encountered\n");
-        return;
+    if (q != NULL) { // checks if queue exists
+        if (q->element_num >= q->length) { // Check for overflow
+            printf("Overflow encountered\n");
+            return;
+        }
+        q->data[q->tail] = x; // Insert the element at the tail
+        q->tail++; // Update the tail index
+        q->element_num++; // Increment the number of elements
+        printf("Element %d queued.\n", x);
     }
-    q->data[q->tail] = x; // Insert the element at the tail
-    q->tail++; // Update the tail index
-    q->element_num++; // Increment the number of elements
-    printf("Element %d queued.\n", x);
+    else {
+        printf("Build queue before enqueuing\n");
+    }
 }
