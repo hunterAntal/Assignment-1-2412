@@ -34,7 +34,7 @@ void build(struct Queue** queue, unsigned long length){
 }
 
 // Function to dequeue an element
-int dequeue(struct Queue *q){
+char dequeue(struct Queue *q){
     if (q != NULL) { // checks if queue exists
         if(q->element_num == 0){ // Check for underflow
             printf("Queue Underflow!\n");
