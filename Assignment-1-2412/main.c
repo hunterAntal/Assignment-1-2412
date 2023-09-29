@@ -56,8 +56,8 @@ char dequeue(struct Queue *q){
 int main(int argc, const char * argv[]) {
     struct Queue *qptr = NULL;
     
-    dequeue(qptr);
-    enqueue(qptr, 3);
+    dequeue(qptr); // testcase dequeue before building
+    enqueue(qptr, 3); // testcase enqueue before building
 
     build(&qptr, 5); // Initialize the queue with size 5
 
